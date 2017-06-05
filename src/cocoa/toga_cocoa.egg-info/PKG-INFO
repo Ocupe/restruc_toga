@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: toga-cocoa
+Version: 1.0
+Summary: A Cocoa (macOS) backend for the Toga widget toolkit.
+Home-page: http://pybee.org/toga
+Author: Russell Keith-Magee
+Author-email: russell@keith-magee.com
+License: New BSD
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Environment :: MacOS X :: Cocoa
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: User Interfaces
+Classifier: Topic :: Software Development :: Widget Sets

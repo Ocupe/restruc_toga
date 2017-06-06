@@ -1,37 +1,23 @@
-from .base import Widget
-from ..platform import Platform
-
-# TODO combine core.button with cocoa.button to one class
+import abc
 
 
-class ButtonImpl(Widget):
-    """
-    Button widget, a clickable button
+class ButtonABC(metaclass=abc.ABCMeta):
+    """ This class defines the interface of a toga button """
+    # @abc.abstractmethod
+    # def test(self):
+    #     pass
 
-    :param label:       Text to be shown on the button
-    :type label:        ``str``
-
-    :param id:          An identifier for this widget.
-    :type  id:          ``str``
-
-    :param style:       an optional style object. If no style is provided then a
-                        new one will be created for the widget.
-    :type style:        :class:`colosseum.CSSNode`
-
-    :param on_press:    Function to execute when pressed
-    :type on_press:     ``callable``
-    """
-
+    @abc.abstractmethod
     def __init__(self, label, id=None, style=None, on_press=None, enabled=None):
-        super().__init__(id=id, style=style, label=label, on_press=on_press,
-                         enabled=enabled)
+        pass
 
+    @abc.abstractmethod
     def _configure(self, label, on_press, enabled):
         self.label = label
         self.on_press = on_press
         self.enabled = enabled
 
-    @property
+    @abc.abstractproperty
     def label(self):
         """
         :returns: The label value
@@ -54,10 +40,11 @@ class ButtonImpl(Widget):
         self._set_label(str(value))
         self.rehint()
 
+    @abc.abstractmethod
     def _set_label(self, value):
         raise NotImplementedError('Button widget must define _set_label()')
 
-    @property
+    @abc.abstractproperty
     def on_press(self):
         """
         The callable function for when the button is pressed
@@ -80,7 +67,7 @@ class ButtonImpl(Widget):
     def _set_on_press(self, value):
         pass
 
-    @property
+    @abc.abstractproperty
     def enabled(self):
         """
         Indicates whether the button can be pressed by the user.
@@ -104,5 +91,6 @@ class ButtonImpl(Widget):
             self._enabled = value
         self._set_enabled(value)
 
+    @abc.abstractmethod
     def _set_enabled(self, value):
         raise NotImplementedError('Button widget must define _set_enabled()')

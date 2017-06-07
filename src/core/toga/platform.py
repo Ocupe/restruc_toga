@@ -1,6 +1,7 @@
 import sys
+from functools import lru_cache
 
-
+@lru_cache(maxsize=8)
 def get_platform_factory():
     if sys.platform == 'ios':
         pass

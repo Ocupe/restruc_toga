@@ -1,5 +1,6 @@
 from builtins import id as identifier
 from colosseum import CSS
+from toga.platform import get_platform_factory
 
 
 class Point:
@@ -126,7 +127,7 @@ class Widget:
                     new one will be created for the widget.
     :type style:    :class:`colosseum.CSSNode`
     '''
-    def __init__(self, id=None, style=None, **config):
+    def __init__(self, id=None, style=None, factory=None, **config):
         self._id = id if id else identifier(self)
         self._parent = None
         self._children = None
@@ -143,6 +144,11 @@ class Widget:
             self.style = style.copy()
         else:
             self.style = CSS()
+
+        if factory is None:
+            self.factory = get_platform_factory()
+        else:
+            self.factory = factory
 
     def __repr__(self):
         return "<%s:%s>" % (self.__class__.__name__, id(self))
@@ -283,9 +289,9 @@ class Widget:
             for child in self._children:
                 child._container = container
 
-    def _create(self):
-        self.create()
-        self._configure(**self._config)
+    # def _create(self):
+    #     self._impl.create()
+    #     # self._configure(**self._config)
 
     def _initialize(self, **initial):
         pass

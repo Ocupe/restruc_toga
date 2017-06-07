@@ -20,11 +20,12 @@ if __name__ == '__main__':
     btn = toga.Button('My Button')
     print(btn)
     print(btn.label)
-    print(btn.factory)
-    # fixme factory return the same button
+    print(btn.enabled)
+    btn.enabled = False
+    print(btn.enabled)
+
     btn2 = toga.Button('Button 2')
     print(btn2)
-    print(btn2.factory)
     print(btn2.label)
     btn2.label = 'Nice'
     btn2.on_press = callback

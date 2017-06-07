@@ -1,5 +1,5 @@
 from rubicon.objc import objc_method, get_selector
-from .base import WidgetMixin
+from .base import Widget
 from ..libs import *
 from ..utils import process_callback
 
@@ -11,7 +11,7 @@ class TogaButton(NSButton):
             process_callback(self._interface.on_press(self._interface))
 
 
-class Button(WidgetMixin):
+class Button(Widget):
     def __init__(self, creator):
         self.creator = creator
         pass
@@ -31,9 +31,6 @@ class Button(WidgetMixin):
     def set_label(self, label):
         self._impl.setTitle_(label)
         self.rehint()
-
-    def set_enabled(self, value):
-        self._impl.setEnabled_(value)
 
     def rehint(self):
         fitting_size = self._impl.fittingSize()

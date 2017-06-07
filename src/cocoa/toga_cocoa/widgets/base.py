@@ -1,7 +1,7 @@
 from ..container import Constraints
 
 
-class WidgetMixin:
+class Widget:
     def _set_app(self, app):
         pass
 
@@ -31,3 +31,6 @@ class WidgetMixin:
 
     def _set_font(self, font):
         self._impl.setFont_(font._impl)
+
+    def set_enabled(self, value):
+        self._impl.setEnabled_(value)

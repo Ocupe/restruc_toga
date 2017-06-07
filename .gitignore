@@ -10,7 +10,7 @@
 [Ll]ocal
 [Ss]cripts
 pyvenv.cfg
-.venv
+venv
 pip-selfcheck.json
 ### Python template
 # Byte-compiled / optimized / DLL files
@@ -20,6 +20,7 @@ __pycache__/
 
 # C extensions
 *.so
+*.pyc
 
 # Distribution / packaging
 .Python

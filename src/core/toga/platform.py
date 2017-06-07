@@ -1,10 +1,24 @@
-# defines which platform toga is running on
 import sys
-import os
 
 
-# from .factory import Factory
-
+def get_platform_factory():
+    if sys.platform == 'ios':
+        pass
+    elif sys.platform == 'tvos':
+        pass
+    elif sys.platform == 'watchos':
+        pass
+    elif sys.platform == 'android':
+        pass
+    elif sys.platform == 'darwin':
+        from toga_cocoa.toga_cocoa_factory import TogaCocoaFactory
+        return TogaCocoaFactory
+    elif sys.platform == 'linux':
+        pass
+    elif sys.platform == 'win32':
+        pass
+    else:
+        raise RuntimeError("Couldn't identify a supported host platform.")
 
 
 class Singleton(type):
@@ -17,6 +31,11 @@ class Singleton(type):
 
 
 class Platform(object):
+    """ Platform handles stuff like:
+    - on what platform does toga run
+    - providing the requested or for the system suitable TogaFactory
+
+    """
     __metaclass__ = Singleton
 
     def __init__(self, platform=None):
@@ -26,10 +45,6 @@ class Platform(object):
     @property
     def factory(self):
         return self._factory
-
-    @factory.setter
-    def factory(self, factory):
-        self._factory = factory
 
     def get_platform_factory(self):
         if self.platform_name is None:
@@ -44,7 +59,7 @@ class Platform(object):
             elif sys.platform == 'darwin':
                 self.platform_name = 'cocoa'
                 from toga_cocoa.toga_cocoa_factory import TogaCocoaFactory
-                self.factory = TogaCocoaFactory
+                self._factory = TogaCocoaFactory
             elif sys.platform == 'linux':
                 self.platform_name = 'gtk'
             elif sys.platform == 'win32':
@@ -52,46 +67,3 @@ class Platform(object):
             else:
                 raise RuntimeError("Couldn't identify a supported host platform.")
         return self.factory
-
-
-# def get_platform():
-#     factory = get_platform_name()
-#     # for sc in Factory.__subclasses__():
-#     #     print(sc.__name__)
-#     return 'cocoa'
-#
-#
-# def get_platform_factory():
-#     factory = None
-#
-#     def wrapped():
-#         nonlocal factory
-#         if factory:
-#             return factory
-#         else:
-#             platform_name = os.environ.get('TOGA_PLATFORM')
-#
-#             # If we don't have a manually defined platform, attempt to
-#             # autodetect and set the platform
-#             if platform_name is None:
-#                 if sys.platform == 'ios':
-#                     platform_name = 'iOS'
-#                 elif sys.platform == 'tvos':
-#                     platform_name = 'tvOS'
-#                 elif sys.platform == 'watchos':
-#                     platform_name = 'watchOS'
-#                 elif sys.platform == 'android':
-#                     platform_name = 'android'
-#                 elif sys.platform == 'darwin':
-#                     platform_name = 'cocoa'
-#                     from toga_cocoa.toga_cocoa_factory import TogaCocoaFactory
-#                     factory = TogaCocoaFactory
-#                 elif sys.platform == 'linux':
-#                     platform_name = 'gtk'
-#                 elif sys.platform == 'win32':
-#                     platform_name = 'winforms'
-#                 else:
-#                     raise RuntimeError("Couldn't identify a supported host platform.")
-#             return factory
-#
-#     return wrapped

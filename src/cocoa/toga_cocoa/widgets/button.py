@@ -1,7 +1,4 @@
 from rubicon.objc import objc_method, get_selector
-
-from toga.widgets.button_impl import ButtonImpl
-
 from .base import WidgetMixin
 from ..libs import *
 from ..utils import process_callback
@@ -14,11 +11,10 @@ class TogaButton(NSButton):
             process_callback(self._interface.on_press(self._interface))
 
 
-class Button(ButtonImpl, WidgetMixin):
-    def __init__(self, label, id=None, style=None, on_press=None, enabled=None):
-        super().__init__(label, id=id, style=style, on_press=on_press,
-                        enabled=enabled)
-        self._create()
+class Button(WidgetMixin):
+    def __init__(self, creator):
+        self.creator = creator
+        pass
 
     def create(self):
         self._impl = TogaButton.alloc().init()
@@ -32,16 +28,19 @@ class Button(ButtonImpl, WidgetMixin):
         # Add the layout constraints
         self._add_constraints()
 
-    def _set_label(self, label):
-        self._impl.setTitle_(self.label)
+    def set_label(self, label):
+        self._impl.setTitle_(label)
         self.rehint()
 
-    def _set_enabled(self, value):
-        self._impl.setEnabled_(self.enabled)
+    def set_enabled(self, value):
+        self._impl.setEnabled_(value)
 
     def rehint(self):
         fitting_size = self._impl.fittingSize()
-        self.style.hint(
+        self.creator.style.hint(
             height=fitting_size.height,
             min_width=fitting_size.width,
         )
+
+
+

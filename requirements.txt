@@ -1,0 +1,17 @@
+appdirs==1.4.0
+args==0.1.0
+clint==0.5.1
+colosseum==0.1.6
+coverage==4.4.1
+gitdb2==2.0.0
+GitPython==2.1.1
+legit==0.4.1
+packaging==16.8
+py==1.4.34
+pyparsing==2.1.10
+pytest==3.1.1
+-e git+https://github.com/Ocupe/rubicon-objc.git@ae3d427bedd7fe972d32ea03ef830e12aa3e8a31#egg=rubicon_objc
+six==1.10.0
+smmap2==2.0.1
+-e git+https://github.com/Ocupe/restruc_toga.git@c931afbd090eb3925e3def61c8dfcf1cd2215e62#egg=toga&subdirectory=src/core
+toga-cocoa==1.0

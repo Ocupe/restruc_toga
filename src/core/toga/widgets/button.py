@@ -1,4 +1,3 @@
-from ..platform import Platform
 from .base import Widget
 
 

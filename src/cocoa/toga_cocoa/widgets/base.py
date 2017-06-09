@@ -15,7 +15,7 @@ class Widget:
         self.rehint()
 
     def _add_child(self, child):
-        if self._container:
+        if self.creator._container:
             child._set_container(self._container)
 
     def _add_constraints(self):

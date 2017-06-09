@@ -1,4 +1,5 @@
 toga_cocoa/__init__.py
+toga_cocoa/app.py
 toga_cocoa/container.py
 toga_cocoa/font.py
 toga_cocoa/toga_cocoa_factory.py

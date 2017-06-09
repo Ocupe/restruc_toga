@@ -222,7 +222,7 @@ class Widget:
         if self.parent:
             self.parent.layout.dirty = True
 
-        self._add_child(child)
+        self._impl._add_child(child)
 
     @property
     def app(self):
@@ -246,7 +246,7 @@ class Widget:
                 raise ValueError("Widget %s is already associated with an App" % self)
         elif app is not None:
             self._app = app
-            self._set_app(app)
+            self._impl._set_app(app)
             if self._children is not None:
                 for child in self._children:
                     child.app = app
@@ -269,7 +269,7 @@ class Widget:
         :type  window: :class:`toga.Window`
         '''
         self._window = window
-        self._set_window(window)
+        self._impl._set_window(window)
         if self._children is not None:
             for child in self._children:
                 child.window = window
@@ -319,7 +319,7 @@ class Widget:
         self._update_child_layout()
 
         # Set the constraints the widget to adhere to the new style.
-        self._apply_layout()
+        self._impl._apply_layout()
         self._layout_in_progress = False
 
     def _update_child_layout(self):

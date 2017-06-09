@@ -12,8 +12,8 @@ def get_platform_factory():
     elif sys.platform == 'android':
         pass
     elif sys.platform == 'darwin':
-        from toga_cocoa.toga_cocoa_factory import TogaCocoaFactory
-        return TogaCocoaFactory
+        from toga_cocoa import factory
+        return factory
     elif sys.platform == 'linux':
         pass
     elif sys.platform == 'win32':

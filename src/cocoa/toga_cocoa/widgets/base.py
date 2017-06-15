@@ -9,8 +9,8 @@ class Widget:
         pass
 
     def _set_container(self, container):
-        if self._constraints and self._plat_impl:
-            self._container._plat_impl.addSubview_(self._plat_impl)
+        if self._constraints and self._native:
+            self._container._native.addSubview_(self._native)
             self._constraints._container = container
         self.rehint()
 
@@ -19,7 +19,7 @@ class Widget:
             child._set_container(self._container)
 
     def _add_constraints(self):
-        self._plat_impl.setTranslatesAutoresizingMaskIntoConstraints_(False)
+        self._native.setTranslatesAutoresizingMaskIntoConstraints_(False)
         self._constraints = Constraints(self)
 
     def _apply_layout(self):
@@ -30,7 +30,7 @@ class Widget:
         pass
 
     def _set_font(self, font):
-        self._plat_impl.setFont_(font._plat_impl)
+        self._native.setFont_(font._native)
 
     def set_enabled(self, value):
-        self._plat_impl.setEnabled_(value)
+        self._native.setEnabled_(value)

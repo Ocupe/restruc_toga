@@ -3,17 +3,11 @@ from .base import Widget
 
 class Button(Widget):
     """ This class is a wrapper for a platform specific implementation of a button. """
+
     def __init__(self, label, id=None, style=None, on_press=None, enabled=None, factory=None):
         super().__init__(id=id, style=style, enabled=enabled, factory=factory)
 
         self._impl = self.factory.Button(creator=self)
-        self._create()
-        self._configure(label, on_press, enabled)
-
-    def _create(self):
-        self._impl.create()
-
-    def _configure(self, label, on_press, enabled):
         self.label = label
         self.on_press = on_press
         self.enabled = enabled

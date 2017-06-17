@@ -17,8 +17,8 @@ class TestCoreButton(unittest.TestCase):
         self.enabled = True
         self.btn = toga.Button(self.label, factory=self.factory)
 
-    def test_button_creation(self):
-        self.factory.Button.assert_called()
+    def test_button_factory_called(self):
+        self.factory.Button.assert_called_once_with(creator=self.btn)
 
     def test_button_label(self):
         self.assertEqual(self.btn._label, self.label)

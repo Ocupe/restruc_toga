@@ -1,6 +1,7 @@
 from builtins import id as identifier
 from .platform import get_platform_factory
 
+
 class App(object):
     '''
     The App is the top level of any GUI program. It is the manager of all
@@ -50,7 +51,6 @@ class App(object):
         :type  document_types: ``list`` of ``str``
         '''
 
-
         App.app = self
 
         # if self._MAIN_WINDOW_CLASS is None:
@@ -71,16 +71,10 @@ class App(object):
             self.factory = get_platform_factory()
         else:
             self.factory = factory
-        print(dir(self.factory))
         self._impl = self.factory.App(creator=self)
-        # self._create()
-        self._configure()
 
-    def _create(self):
-        self._impl.create()
-
-    def _configure(self):
-        pass
+        # Call user code to populate the main window
+        self.startup()
 
     @property
     def app_id(self):
@@ -91,7 +85,7 @@ class App(object):
         
         :rtype: ``str``
         '''
-        return self._id
+        return self._app_id
 
     @property
     def id(self):
@@ -150,4 +144,3 @@ class App(object):
         This method typically only returns once the application is exiting.
         '''
         self._impl.main_loop()
-

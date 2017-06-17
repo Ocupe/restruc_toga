@@ -71,22 +71,10 @@ class AppDelegate(NSObject):
 class App():
     _MAIN_WINDOW_CLASS = MainWindow
 
-    # def __init__(self, name, app_id, icon=None, startup=None, document_types=None):
     def __init__(self, creator):
-        self.creator = creator
-        # Set the icon for the app
-        # Icon.app_icon = Icon.load(icon, default=TIBERIUS_ICON)
+        self._creator = creator
 
-        # super().__init__(
-        #     name=name,
-        #     app_id=app_id,
-        #     icon=Icon.app_icon,
-        #     startup=startup,
-        #     document_types=document_types
-        # )
-        pass
-
-    def _startup(self):
+    def _create(self):
         self._impl = NSApplication.sharedApplication()
         self._impl.setActivationPolicy_(NSApplicationActivationPolicyRegular)
 
@@ -98,7 +86,7 @@ class App():
         appDelegate._interface = self
         self._impl.setDelegate_(appDelegate)
 
-        app_name = self.creator.name
+        app_name = self._creator.name
 
         self.menu = NSMenu.alloc().initWithTitle_('MainMenu')
 
@@ -131,16 +119,13 @@ class App():
         # Set the menu for the app.
         self._impl.setMainMenu_(self.menu)
 
-        # Call user code to populate the main window
-        self.creator.startup()
-
     def open_document(self, fileURL):
         '''Add a new document to this app.'''
         print("STUB: If you want to handle opening documents, implement App.open_document(fileURL)")
 
     def main_loop(self):
         # Stimulate the build of the app
-        self._startup()
+        self._create()
         # Modify signal handlers to make sure Ctrl-C is caught and handled.
         signal.signal(signal.SIGINT, signal.SIG_DFL)
 

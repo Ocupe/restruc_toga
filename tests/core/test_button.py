@@ -8,6 +8,8 @@ class TestCoreButton(unittest.TestCase):
     def setUp(self):
         # mock factory to return a mock button
         self.factory = MagicMock()
+        # Fixme | The MagicMock returns a MagicMock with the specs of a cocoa.Button.
+        # This makes the test not platform independent. Solution could be a platform independent dummy backend.
         self.factory.Button = MagicMock(return_value=MagicMock(spec=toga_cocoa.widgets.button.Button))
         # init button with test factory
         self.label = 'Test Button'
@@ -37,12 +39,11 @@ class TestCoreButton(unittest.TestCase):
 
     def test_button_on_press(self):
         self.assertEqual(self.btn._on_press, self.on_press)
+
         # set new callback
         def callback(obj):
             return 'called'
+
         self.btn.on_press = callback
         self.assertEqual(self.btn.on_press, callback)
         # test if backend gets called with the right function
-
-    def test_button_impl_created(self):
-        self.btn._impl.create.assert_called()

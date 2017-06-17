@@ -7,7 +7,9 @@ class Button(Widget):
     def __init__(self, label, id=None, style=None, on_press=None, enabled=None, factory=None):
         super().__init__(id=id, style=style, enabled=enabled, factory=factory)
 
+        # Create a platform specific implementation of a Button
         self._impl = self.factory.Button(creator=self)
+        # Set all the properties
         self.label = label
         self.on_press = on_press
         self.enabled = enabled

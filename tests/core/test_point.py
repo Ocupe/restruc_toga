@@ -14,5 +14,5 @@ class TestCorePoint(unittest.TestCase):
     def test_point_left(self):
         self.assertEqual(self.point.left, 100)
 
-    def test_point_right(self):
-        self.assertEqual(self.point.left, 50)
+    def test_point_top(self):
+        self.assertEqual(self.point.top, 50)

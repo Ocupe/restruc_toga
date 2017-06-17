@@ -17,9 +17,6 @@ class TestCoreButton(unittest.TestCase):
         self.enabled = True
         self.btn = toga.Button(self.label, factory=self.factory)
 
-    def tearDown(self):
-        pass
-
     def test_button_creation(self):
         self.factory.Button.assert_called()
 
@@ -29,6 +26,10 @@ class TestCoreButton(unittest.TestCase):
         self.assertEqual(self.btn.label, 'New Label')
         # test if backend gets called with the right label
         self.btn._impl.set_label.assert_called_with('New Label')
+
+    def test_button_label_with_None(self):
+        self.btn.label = None
+        self.assertEqual(self.btn.label, '')
 
     def test_button_enabled(self):
         self.assertEqual(self.btn._enabled, self.enabled)
@@ -41,9 +42,10 @@ class TestCoreButton(unittest.TestCase):
         self.assertEqual(self.btn._on_press, self.on_press)
 
         # set new callback
-        def callback(obj):
+        def callback():
             return 'called'
 
         self.btn.on_press = callback
         self.assertEqual(self.btn.on_press, callback)
+        self.assertEqual(self.btn.on_press(), 'called')
         # test if backend gets called with the right function

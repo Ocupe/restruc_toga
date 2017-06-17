@@ -4,6 +4,7 @@ from .window import Window
 from .widgets.box import Box
 from .widgets.button import Button
 from .widgets.icon import Icon
+from .widgets.base import Layout, Point, Widget
 
 __all__ = [
     'App',
@@ -11,4 +12,7 @@ __all__ = [
     'Button',
     'Icon',
     'Window',
+    'Layout',
+    'Point',
+    'Widget'
 ]

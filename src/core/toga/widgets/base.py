@@ -284,7 +284,7 @@ class Widget:
     @_container.setter
     def _container(self, container):
         self.__container = container
-        self._set_container(container)
+        self._impl._set_container(container)
         if self._children is not None:
             for child in self._children:
                 child._container = container

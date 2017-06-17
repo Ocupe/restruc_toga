@@ -27,11 +27,11 @@ class Box(Widget):
         else:
             self.factory = factory
         self._impl = self.factory.Box(creator=self)
-        self._create()
+        # self._create()
         # self._configure()
 
-    def _create(self):
-        self._impl.create()
+    # def _create(self):
+    #     self._impl.create()
 
     def _configure(self, children):
         if children:

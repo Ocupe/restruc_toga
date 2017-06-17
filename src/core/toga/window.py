@@ -74,15 +74,13 @@ class Window:
         else:
             self.factory = factory
         self._impl = self.factory.Window(creator=self)
-        self._create()
+        # self._create()
         # self._configure()
         self.position = position
         self.size = size
 
-
-
-    def _create(self):
-        self._impl.create()
+    # def _create(self):
+    #     self._impl.create()
 
     def _configure(self):
         pass
@@ -172,7 +170,7 @@ class Window:
         # Assign the widget to window.
         widget.window = self
 
-        if widget._impl is None:
+        if widget._impl._native is None:
             self._container = self._impl._CONTAINER_CLASS()
             self._container.content = widget
         else:

@@ -8,7 +8,8 @@ def callback(btn):
 def build(app):
     box = toga.Box(style=CSS(flex=1, margin=20))
     btn = toga.Button('My Button', on_press=callback)
-    return btn
+    box.add(btn)
+    return box
 
 if __name__ == '__main__':
     # window = toga.Window()

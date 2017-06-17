@@ -7,8 +7,8 @@ from ..utils import process_callback
 class TogaButton(NSButton):
     @objc_method
     def onPress_(self, obj) -> None:
-        if self._interface.on_press:
-            process_callback(self._interface._creator.on_press(self._interface._creator))
+        if self.interface.on_press:
+            process_callback(self.interface.on_press(self.interface))
 
 
 class Button(Widget):
@@ -18,7 +18,7 @@ class Button(Widget):
 
     def _create(self):
         self._native = TogaButton.alloc().init()
-        self._native._interface = self
+        self._native.interface = self._creator
 
         self._native.setBezelStyle_(NSRoundedBezelStyle)
         self._native.setButtonType_(NSMomentaryPushInButton)

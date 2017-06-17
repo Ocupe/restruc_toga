@@ -10,7 +10,7 @@ class Widget:
 
     def _set_container(self, container):
         if self._constraints and self._native:
-            self._container._native.addSubview_(self._native)
+            self._creator._container._native.addSubview_(self._native)
             self._constraints._container = container
         self.rehint()
 

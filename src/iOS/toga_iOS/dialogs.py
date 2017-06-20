@@ -51,9 +51,9 @@ class Dialog:
         self.on_accept = on_accept
         self.on_cancel = on_cancel
 
-        self.startup()
+        self._create()
 
-    def startup(self):
+    def _create(self):
         self.content.startup()
-        self._impl = TogaDialog.alloc().init()
-        self._impl.interface = self
+        self._native = TogaDialog.alloc().init()
+        self._native.interface = self

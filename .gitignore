@@ -13,6 +13,7 @@
 [Ss]cripts
 pyvenv.cfg
 venv
+venv_35
 pip-selfcheck.json
 ### Python template
 # Byte-compiled / optimized / DLL files

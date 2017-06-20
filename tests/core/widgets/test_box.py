@@ -14,17 +14,14 @@ class TestCoreBox(unittest.TestCase):
         # init box with test factory
         self.box = toga.Box(factory=self.factory)
 
-    def tearDown(self):
-        pass
-
     def test_box_creation(self):
         self.assertEqual(self.box.factory, self.factory)
 
     def test_box_impl_creation(self):
         self.factory.Box.assert_called_with(creator=self.box)
 
-    @patch('toga.widgets.box.get_platform_factory')
+    @patch('toga.widgets.base.get_platform_factory')
     def test_box_with_without_factory(self, mock_function):
         btn = toga.Box()
-        mock_function.assert_called_once()
+        mock_function.assert_called_once_with()
 

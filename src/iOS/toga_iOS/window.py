@@ -10,15 +10,12 @@ class Window():
     _CONTAINER_CLASS = Container
     _DIALOG_MODULE = dialogs
 
-    def __init__(self, creator, title=None, position=(100, 100), size=(640, 480), toolbar=None, resizeable=True, closeable=True, minimizable=True):
-        # super().__init__(title=None, position=(100, 100), size=(640, 480), toolbar=None, resizeable=True, closeable=False, minimizable=False)
+    def __init__(self, creator):
         self._creator = creator
         self._create()
 
     def _create(self):
-        # UIScreen.declare_class_property('mainScreen')
         self._screen = UIScreen.mainScreen
-        print(self._screen)
         self._impl = self._IMPL_CLASS.alloc().initWithFrame_(self._screen.bounds)
         self._impl._interface = self
 
@@ -31,13 +28,16 @@ class Window():
         self._impl.rootViewController = self._controller
         self._controller.view = self._creator._container._native
 
-    def _set_title(self, title):
+    def set_title(self, title):
         pass
 
     def _set_position(self, position):
         pass
 
     def _set_size(self, size):
+        pass
+
+    def set_app(self, app):
         pass
 
     def show(self):

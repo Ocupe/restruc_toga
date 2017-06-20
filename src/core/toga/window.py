@@ -53,45 +53,19 @@ class Window:
         self._position = position
         self._size = size
 
-
-
         self.resizeable = resizeable
         self.closeable = closeable
         self.minimizable = minimizable
-
-        self._config = {
-            'title': title,
-            'position': position,
-            'size': size,
-            'toolbar': toolbar,
-            'resizeable': resizeable,
-            'closeable': closeable,
-            'minimizable': minimizable,
-        }
 
         if factory is None:
             self.factory = get_platform_factory()
         else:
             self.factory = factory
         self._impl = self.factory.Window(creator=self)
-        # self._create()
-        # self._configure()
         self.position = position
         self.size = size
-
-    # def _create(self):
-    #     self._impl.create()
-
-    def _configure(self):
-        pass
-
-    # def _create(self):
-    #     self._impl.create()
-    #     self._configure(**self._config)
-
-    # def _configure(self, title, position, size, toolbar, resizeable, closeable, minimizable):
-    #     self.title = title
-    #     self.toolbar = toolbar
+        self.title = title
+        self.toolbar = toolbar
 
     @property
     def app(self):
@@ -108,10 +82,7 @@ class Window:
             raise Exception("Window is already associated with an App")
 
         self._app = app
-        self._set_app(app)
-
-    def _set_app(self, app):
-        pass
+        self._impl.set_app(app)
 
     @property
     def title(self):
@@ -127,7 +98,7 @@ class Window:
         if not title:
             title = "Toga"
 
-        self._impl._set_title(title)
+        self._impl.set_title(title)
         self._title = title
 
     @property
@@ -238,7 +209,7 @@ class Window:
 
     def stack_trace_dialog(self, title, message, content, retry=False):
         return self._DIALOG_MODULE.stack_trace(self, title, message,
-                                                content, retry)
+                                               content, retry)
 
     def save_file_dialog(self, title, suggested_filename, file_types):
         return self._DIALOG_MODULE.save_file(self, title, suggested_filename,

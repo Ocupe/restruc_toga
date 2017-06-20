@@ -1,9 +1,6 @@
-from rubicon.objc import objc_method
-
-
-
 from .libs import *
 from toga.window import Window
+from rubicon.objc import objc_method
 
 
 class MainWindow(Window):
@@ -23,18 +20,16 @@ class PythonAppDelegate(UIResponder):
     @objc_method
     def application_didFinishLaunchingWithOptions_(self, application, launchOptions) -> bool:
         print("App finished launching.")
-        print('App: ', App)
-        print(dir(App))
-        print('App.app in PythonAppDelegate: ', dir(App.app))
         App.app._startup()
         return True
 
     @objc_method
     def application_didChangeStatusBarOrientation_(self, application, oldStatusBarOrientation: int) -> None:
+        """ This callback is invoked when rotating the device from landscape to portrait and vice versa. """
         print("ROTATED", oldStatusBarOrientation)
-        App.app.main_window.content._update_layout(
-            width=App.app.main_window._screen.bounds.size.width,
-            height=App.app.main_window._screen.bounds.size.height,
+        App.app._creator.main_window.content._update_layout(
+            width=App.app._creator.main_window._impl._screen.bounds.size.width,
+            height=App.app._creator.main_window._impl._screen.bounds.size.height,
         )
 
 
@@ -43,20 +38,14 @@ class App():
 
     def __init__(self, creator):
         self._creator = creator
-        App.app = self
-        # super().__init__(
-        #     name=name,
-        #     app_id=app_id,
-        #     icon=None,  # Icon is ignored on iOS
-        #     startup=startup,
-        #     document_types=document_types
-        # )
+        App.app = self  # Add a reference for the PythonAppDelegate class to use.
 
     def _startup(self):
+        """ Calls the startup method on the interface """
         self._creator.startup()
 
     def open_document(self, fileURL):
-        '''Add a new document to this app.'''
+        """ Add a new document to this app."""
         print("")
 
     def main_loop(self):

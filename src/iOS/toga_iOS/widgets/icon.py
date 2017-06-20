@@ -1,7 +1,6 @@
-from toga.interface import Icon as IconInterface
 
 
-class Icon(IconInterface):
+class Icon():
     EXTENSION = ''
 
     def create(self, filename):

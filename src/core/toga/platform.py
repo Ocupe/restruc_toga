@@ -4,7 +4,8 @@ from functools import lru_cache
 @lru_cache(maxsize=8)
 def get_platform_factory():
     if sys.platform == 'ios':
-        pass
+        from toga_iOS import factory
+        return factory
     elif sys.platform == 'tvos':
         pass
     elif sys.platform == 'watchos':

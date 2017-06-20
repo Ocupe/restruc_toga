@@ -1,6 +1,6 @@
 from rubicon.objc import objc_method
 
-from toga.interface.app import App as AppInterface
+
 
 from .libs import *
 from .window import Window
@@ -12,7 +12,7 @@ class MainWindow(Window):
 
     def startup(self):
         super(MainWindow, self).startup()
-        self._impl.setBackgroundColor_(UIColor.whiteColor())
+        self._native.setBackgroundColor_(UIColor.whiteColor())
 
 
 class PythonAppDelegate(UIResponder):
@@ -35,20 +35,21 @@ class PythonAppDelegate(UIResponder):
         )
 
 
-class App(AppInterface):
+class App():
     _MAIN_WINDOW_CLASS = MainWindow
 
-    def __init__(self, name, app_id, icon=None, startup=None, document_types=None):
-        super().__init__(
-            name=name,
-            app_id=app_id,
-            icon=None,  # Icon is ignored on iOS
-            startup=startup,
-            document_types=document_types
-        )
+    def __init__(self, creator):
+        self._creator = creator
+        # super().__init__(
+        #     name=name,
+        #     app_id=app_id,
+        #     icon=None,  # Icon is ignored on iOS
+        #     startup=startup,
+        #     document_types=document_types
+        # )
 
     def _startup(self):
-        self.startup()
+        self._creator.startup()
 
     def open_document(self, fileURL):
         '''Add a new document to this app.'''

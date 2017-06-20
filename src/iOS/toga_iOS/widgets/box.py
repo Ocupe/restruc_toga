@@ -6,9 +6,9 @@ from ..libs import *
 
 class Box(Widget):
     def __init__(self, creator):
+        self._native = None
         self._creator = creator
         self._create()
-        self._native = None
 
     def _create(self):
         self._constraints = None

@@ -51,7 +51,8 @@ class App(object):
         :type  document_types: ``list`` of ``str``
         '''
 
-        App.app = self
+        # App.app = self
+        # print('App.app: ', App.app)
 
         # if self._MAIN_WINDOW_CLASS is None:
         #     raise NotImplementedError('App class must define _MAIN_WINDOW_CLASS')
@@ -73,8 +74,8 @@ class App(object):
             self.factory = factory
         self._impl = self.factory.App(creator=self)
 
-        # Call user code to populate the main window
-        self.startup()
+        # # Call user code to populate the main window
+        # self.startup()
 
     @property
     def app_id(self):

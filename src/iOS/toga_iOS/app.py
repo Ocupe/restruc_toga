@@ -3,7 +3,7 @@ from rubicon.objc import objc_method
 
 
 from .libs import *
-from .window import Window
+from toga.window import Window
 
 
 class MainWindow(Window):
@@ -23,6 +23,9 @@ class PythonAppDelegate(UIResponder):
     @objc_method
     def application_didFinishLaunchingWithOptions_(self, application, launchOptions) -> bool:
         print("App finished launching.")
+        print('App: ', App)
+        print(dir(App))
+        print('App.app in PythonAppDelegate: ', dir(App.app))
         App.app._startup()
         return True
 
@@ -40,6 +43,7 @@ class App():
 
     def __init__(self, creator):
         self._creator = creator
+        App.app = self
         # super().__init__(
         #     name=name,
         #     app_id=app_id,

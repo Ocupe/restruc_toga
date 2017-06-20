@@ -1,14 +1,16 @@
 toga_cocoa/__init__.py
 toga_cocoa/app.py
 toga_cocoa/container.py
+toga_cocoa/dialogs.py
 toga_cocoa/font.py
-toga_cocoa/toga_cocoa_factory.py
 toga_cocoa/utils.py
+toga_cocoa/window.py
 toga_cocoa.egg-info/PKG-INFO
 toga_cocoa.egg-info/SOURCES.txt
 toga_cocoa.egg-info/dependency_links.txt
 toga_cocoa.egg-info/requires.txt
 toga_cocoa.egg-info/top_level.txt
+toga_cocoa/factory/__init__.py
 toga_cocoa/libs/__init__.py
 toga_cocoa/libs/appkit.py
 toga_cocoa/libs/core_graphics.py
@@ -18,4 +20,6 @@ toga_cocoa/libs/quartz.py
 toga_cocoa/libs/webkit.py
 toga_cocoa/widgets/__init__.py
 toga_cocoa/widgets/base.py
+toga_cocoa/widgets/box.py
 toga_cocoa/widgets/button.py
+toga_cocoa/widgets/icon.py

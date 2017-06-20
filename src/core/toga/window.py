@@ -1,4 +1,4 @@
-from src.core.toga.platform import get_platform_factory
+from .platform import get_platform_factory
 
 
 class Window:

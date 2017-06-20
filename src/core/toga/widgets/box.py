@@ -1,4 +1,3 @@
-from src.core.toga.platform import get_platform_factory
 from .base import Widget
 
 
@@ -22,11 +21,6 @@ class Box(Widget):
     def __init__(self, id=None, style=None, children=None, factory=None):
         super().__init__(id=id, style=style, children=children)
         self._children = []
-
-        if factory is None:
-            self.factory = get_platform_factory()
-        else:
-            self.factory = factory
         self._impl = self.factory.Box(creator=self)
 
     def _configure(self, children):

@@ -5,34 +5,32 @@ from setuptools import setup, find_packages
 import sys
 
 
-if sys.version_info[:3] < (3, 4):
-    raise SystemExit("Toga requires Python 3.4+.")
-
-
-with io.open('toga_iOS/__init__.py', encoding='utf8') as version_file:
-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file.read(), re.M)
-    if version_match:
-        version = version_match.group(1)
-    else:
-        raise RuntimeError("Unable to find version string.")
-
-
-with io.open('README.rst', encoding='utf8') as readme:
-    long_description = readme.read()
+# if sys.version_info[:3] < (3, 4):
+#     raise SystemExit("Toga requires Python 3.4+.")
+#
+#
+# with io.open('toga_iOS/__init__.py', encoding='utf8') as version_file:
+#     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file.read(), re.M)
+#     if version_match:
+#         version = version_match.group(1)
+#     else:
+#         raise RuntimeError("Unable to find version string.")
+#
+#
+# with io.open('README.rst', encoding='utf8') as readme:
+#     long_description = readme.read()
 
 
 setup(
     name='toga-iOS',
-    version=version,
+    version='1.0',
     description='An iOS backend for the Toga widget toolkit.',
-    long_description=long_description,
     author='Russell Keith-Magee',
     author_email='russell@keith-magee.com',
     url='http://pybee.org/toga',
     packages=find_packages(exclude='tests'),
     install_requires=[
         'rubicon-objc>=0.2.7',
-        'toga-core>=%s' % version,
     ],
     license='New BSD',
     classifiers=[

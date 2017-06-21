@@ -1,7 +1,6 @@
 import toga
 from colosseum import CSS
 
-# Todo implement toga.box in a correct way
 def callback(btn):
     print('in callback')
 

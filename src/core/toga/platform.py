@@ -7,17 +7,22 @@ def get_platform_factory():
         from toga_iOS import factory
         return factory
     elif sys.platform == 'tvos':
-        pass
+        from toga_tvOS import factory
+        return factory
     elif sys.platform == 'watchos':
-        pass
+        from toga_watchOS import factory
+        return factory
     elif sys.platform == 'android':
-        pass
+        from toga_android import factory
+        return factory
     elif sys.platform == 'darwin':
         from toga_cocoa import factory
         return factory
     elif sys.platform == 'linux':
-        pass
+        from toga_gtk import factory
+        return factory
     elif sys.platform == 'win32':
-        pass
+        from toga_win32 import factory
+        return factory
     else:
         raise RuntimeError("Couldn't identify a supported host platform.")

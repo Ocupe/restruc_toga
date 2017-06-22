@@ -12,7 +12,7 @@ def build(app):
 
 if __name__ == '__main__':
     # window = toga.Window()
-    app = toga.App('My App', 'ocupe.org.app', startup=build)
+    app = toga.App('My App', 'ocupe.org', startup=build)
     app.main_loop()
 
 

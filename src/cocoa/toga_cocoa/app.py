@@ -119,6 +119,8 @@ class App():
         # Set the menu for the app.
         self._impl.setMainMenu_(self.menu)
 
+        self._creator.startup()
+
     def open_document(self, fileURL):
         '''Add a new document to this app.'''
         print("STUB: If you want to handle opening documents, implement App.open_document(fileURL)")

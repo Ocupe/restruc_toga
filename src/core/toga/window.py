@@ -64,7 +64,7 @@ class Window:
         self._impl = self.factory.Window(creator=self)
         self.position = position
         self.size = size
-        self.title = title
+        # self.title = title
         self.toolbar = toolbar
 
     @property
